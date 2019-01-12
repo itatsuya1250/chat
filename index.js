@@ -1,7 +1,10 @@
-var http = require('http');
-http.createServer(function (request, response) {
-    response.writeHead(200, { 'Content-Type': 'text/plain' });
-    response.end('Hello World\n');
-}).listen(3000);
+var app = require('express')();
+var http = require('http').Server(app);
 
-console.log('Server running');
+app.get('/', function (req, res) {
+    res.send('<h1>Hello world</h1>');
+});
+
+http.listen(3000, function () {
+    console.log('listening on *:3000');
+});
