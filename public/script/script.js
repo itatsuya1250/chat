@@ -29,7 +29,7 @@ $(function () {
 
 	$.ajax({
 		type: 'POST',
-		url: ' http://localhost:3000/',
+		url: 'https://itatsuya1250-chat.glitch.me',
 		data: { command: 'getUserId' },
 		success: function (data, textStatus) {
 			if (textStatus === 'success' && data.userId !== undefined) {
