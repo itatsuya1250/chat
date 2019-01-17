@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chat</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+  <link rel="stylesheet" href="/style.css">
+</head>
+<script src="/socket.io/socket.io.js"></script>
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<script src="/script.js"></script>
+
+<body style="Visibility:hidden">
+  <div id="chat_container" class="chat_container">
+    <div id="chat_title" class="chat_title">
+      チャットタイトル
+    </div>
+    <div id="chat_contents" class="chat_contents scroll">
+    </div>
+    <div id='chat_form' class='chat_form'>
+      <form action="">
+        <div class='chat_form-text'>
+          <textarea id="comment" autocomplete="off" placeholder="メッセージを入力"></textarea>
+        </div>
+        <div class='chat_form-button'>
+          <button id="bt_comment">送信</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
