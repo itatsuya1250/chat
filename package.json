@@ -1,27 +1,16 @@
 {
-  "name": "chat",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "name": "server",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/itatsuya1250/chat.git"
-  },
-  "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/itatsuya1250/chat/issues"
-  },
-  "homepage": "https://github.com/itatsuya1250/chat#readme",
   "dependencies": {
-    "body-parser": "^1.18.3",
+    "cookie-parser": "~1.4.3",
     "date-utils": "^1.2.21",
-    "express": "^4.15.2",
-    "ress": "^1.2.2",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "morgan": "~1.9.0",
     "socket.io": "^2.2.0"
   }
 }

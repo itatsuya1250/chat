@@ -1,38 +1,20 @@
-const express = require('express');
-const app = express();
-const bodyParser = require('body-parser')
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
-const PORT = process.env.PORT || 3000;
-require('date-utils');
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
 
-var userCnt = 0;
+var indexRouter = require('./routes/index');
+var chatRouter = require('./routes/chat');
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(__dirname + '/public'));
+var app = express();
 
-app.get('/', function (req, res) {
-	res.sendFile(__dirname + '/index.html');
-});
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.post('/', function (req, res) {
-	if (req.body['command'] == 'getUserId') {
-		userCnt++;
-		res.json({
-			userId: 'user' + userCnt
-		});
-	}
-});
+app.use('/', indexRouter);
+app.use('/chat', chatRouter);
 
-io.on('connection', function (socket) {
-	console.log('connection')
-	socket.on('chat message', function (obj) {
-		obj.date = new Date().toFormat("HH24:MI");
-		io.emit('chat message', obj);
-		console.log('user:' + obj.user + ',date:' + obj.date + ',msg:' + obj.msg);
-	});
-});
-
-http.listen(PORT, function () {
-	console.log(`listening on *:${PORT}`);
-});
+module.exports = app;
