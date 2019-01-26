@@ -16,11 +16,11 @@ const chat = {
 			});
 
 		});
-		let timer = setInterval(() => {
-			let now = new Date();
-			let json = { msg: now.toLocaleString() }
-			io.emit('time', JSON.stringify(json));
-		}, 1000)
+		// let timer = setInterval(() => {
+		// 	let now = new Date();
+		// 	let json = { msg: now.toLocaleString() }
+		// 	io.emit('time', JSON.stringify(json));
+		// }, 1000)
 	}
 	
 }
