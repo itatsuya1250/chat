@@ -10,9 +10,9 @@ const chat = {
 				console.log('socket disconnected : ' + reason);
 			});
 			socket.on('msg', (data) => {
-				data.date = new Date().toFormat("HH24:MI");
-				console.log(data);
-				io.emit('msg', JSON.stringify(data));
+				let jsonObj = JSON.parse(data);
+				jsonObj.date = new Date().toFormat("HH24:MI");
+				io.emit('msg', JSON.stringify(jsonObj));
 			});
 
 		});
