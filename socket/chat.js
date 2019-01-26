@@ -1,4 +1,5 @@
 require('date-utils');
+process.env.TZ = "Asia/Tokyo";
 
 const chat = {
 	path: '/chat',
@@ -11,13 +12,14 @@ const chat = {
 			socket.on('msg', (data) => {
 				data.date = new Date().toFormat("HH24:MI");
 				console.log(data);
-				io.emit('msg', data);
+				io.emit('msg', JSON.stringify(data));
 			});
 
 		});
 		let timer = setInterval(() => {
 			let now = new Date();
-			io.emit('time', { msg: now.toLocaleString() });
+			let json = { msg: now.toLocaleString() }
+			io.emit('time', JSON.stringify(json));
 		}, 1000)
 	}
 	
